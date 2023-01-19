@@ -1,0 +1,53 @@
+using System;
+using System.IO;
+using Microsoft.VisualBasic.FileIO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Cleaning up GitHub...");
+
+        // Clean up git-credential-manager
+        string gitCredentialManager = @"C:\Program Files\Git\mingw64\bin\git-credential-manager.exe";
+
+        if (File.Exists(gitCredentialManager))
+        {
+            FileSystem.DeleteFile(gitCredentialManager, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        // Clean up git-gui
+        string gitGui = @"C:\Program Files\Git\git-gui\uninstall.exe";
+
+        if (File.Exists(gitGui))
+        {
+            FileSystem.DeleteFile(gitGui, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        // Clean up git-lfs
+        string gitLfs = @"C:\Program Files\Git\git-lfs.exe";
+
+        if (File.Exists(gitLfs))
+        {
+            FileSystem.DeleteFile(gitLfs, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        // Clean up git-shell
+        string gitShell = @"C:\Program Files\Git\git-shell.exe";
+
+        if (File.Exists(gitShell))
+        {
+            FileSystem.DeleteFile(gitShell, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        // Clean up local Git Repos
+        string gitReposPath = @"C:\MyGitRepos\";
+
+        if (Directory.Exists(gitReposPath))
+        {
+            FileSystem.DeleteDirectory(gitReposPath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
+        }
+
+        Console.WriteLine("GitHub cleanup complete.");
+    }
+}
